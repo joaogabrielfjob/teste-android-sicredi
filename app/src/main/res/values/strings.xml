@@ -3,4 +3,10 @@
 
     <!-- Recycler View Events -->
     <string name="btn_show_more_details_label">Detalhes</string>
+
+    <!-- Event Details -->
+    <string name="btn_show_more_text_label">mostrar mais</string>
+    <string name="btn_show_less_text_label">mostrar menos</string>
+    <string name="btn_check_in_label">Check-in</string>
+    <string name="btn_share_label">Compartilhar</string>
 </resources>

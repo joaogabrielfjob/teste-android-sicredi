@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/app_navigation"
+    app:startDestination="@id/splash">
+
+    <fragment
+        android:id="@+id/splash"
+        android:name="br.com.testesicredi.fragments.Splash"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash" >
+        <action
+            android:id="@+id/splashToEvents"
+            app:destination="@id/events" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/events"
+        android:name="br.com.testesicredi.fragments.Events"
+        android:label="fragment_events"
+        tools:layout="@layout/fragment_events" >
+        <action
+            android:id="@+id/eventsToEventDetails"
+            app:destination="@id/eventDetails" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/eventDetails"
+        android:name="br.com.testesicredi.fragments.EventDetails"
+        android:label="EventDetails"
+        tools:layout="@layout/fragment_event_details" >
+        <action
+            android:id="@+id/eventDetailsToCheckIn"
+            app:destination="@id/checkIn" />
+
+        <action
+            android:id="@+id/eventDetailsToEvents"
+            app:destination="@id/events" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/checkIn"
+        android:name="br.com.testesicredi.fragments.CheckIn"
+        android:label="fragment_check_in"
+        tools:layout="@layout/fragment_check_in" >
+        <action
+            android:id="@+id/checkInToEventDetails"
+            app:destination="@id/eventDetails" />
+    </fragment>
+</navigation>

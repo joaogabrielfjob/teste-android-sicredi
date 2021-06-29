@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Teste Sicredi</string>
+    <string name="app_name">Evnts</string>
 
     <!-- Recycler View Events -->
     <string name="btn_show_more_details_label">Detalhes</string>

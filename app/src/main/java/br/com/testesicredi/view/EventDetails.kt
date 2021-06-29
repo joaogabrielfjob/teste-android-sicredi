@@ -2,6 +2,7 @@ package br.com.testesicredi.view
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import br.com.testesicredi.R
@@ -20,10 +21,9 @@ class EventDetails : Fragment(R.layout.fragment_event_details) {
 
         binding = FragmentEventDetailsBinding.bind(view)
         binding.btnGoBack.setOnClickListener { openEvents() }
+        binding.btnCheckIn.setOnClickListener { openCheckIn() }
 
-        val id = arguments?.getString("id")
-
-        eventDetailsViewModel.getEventDetails(id!!)
+        eventDetailsViewModel.getEventDetails(getEventId())
         eventDetailsResponse()
     }
 
@@ -31,8 +31,14 @@ class EventDetails : Fragment(R.layout.fragment_event_details) {
         Navigation.findNavController(requireView()).navigate(R.id.eventDetailsToEvents)
     }
 
+    private fun openCheckIn() {
+        val bundle = bundleOf("id" to getEventId())
+
+        Navigation.findNavController(requireView()).navigate(R.id.eventDetailsToCheckIn, bundle)
+    }
+
     private fun eventDetailsResponse() {
-        eventDetailsViewModel.eventResponse.observe(viewLifecycleOwner, { response ->
+        eventDetailsViewModel.eventDetailsResponse.observe(viewLifecycleOwner, { response ->
             when (response) {
                 is EventDetails -> setEventDetails(response)
 
@@ -49,4 +55,6 @@ class EventDetails : Fragment(R.layout.fragment_event_details) {
             binding.txtEventPrice.text = price
         }
     }
+
+    private fun getEventId() = arguments?.getString("id")!!
 }

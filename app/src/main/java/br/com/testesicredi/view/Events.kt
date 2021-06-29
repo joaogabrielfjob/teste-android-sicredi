@@ -1,4 +1,4 @@
-package br.com.testesicredi.fragments
+package br.com.testesicredi.view
 
 import androidx.fragment.app.Fragment
 import br.com.testesicredi.R

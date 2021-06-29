@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/splash"
-        android:name="br.com.testesicredi.fragments.Splash"
+        android:name="br.com.testesicredi.view.Splash"
         android:label="fragment_splash"
         tools:layout="@layout/fragment_splash" >
         <action
@@ -18,7 +18,7 @@
 
     <fragment
         android:id="@+id/events"
-        android:name="br.com.testesicredi.fragments.Events"
+        android:name="br.com.testesicredi.view.Events"
         android:label="fragment_events"
         tools:layout="@layout/fragment_events" >
         <action
@@ -28,7 +28,7 @@
 
     <fragment
         android:id="@+id/eventDetails"
-        android:name="br.com.testesicredi.fragments.EventDetails"
+        android:name="br.com.testesicredi.view.EventDetails"
         android:label="EventDetails"
         tools:layout="@layout/fragment_event_details" >
         <action
@@ -42,7 +42,7 @@
 
     <fragment
         android:id="@+id/checkIn"
-        android:name="br.com.testesicredi.fragments.CheckIn"
+        android:name="br.com.testesicredi.view.CheckIn"
         android:label="fragment_check_in"
         tools:layout="@layout/fragment_check_in" >
         <action

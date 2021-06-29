@@ -8,8 +8,10 @@ import androidx.navigation.Navigation
 import br.com.testesicredi.R
 import br.com.testesicredi.databinding.FragmentEventDetailsBinding
 import br.com.testesicredi.model.EventDetails
+import br.com.testesicredi.util.GlideApp
 import br.com.testesicredi.util.Util
 import br.com.testesicredi.viewmodel.EventDetailsViewModel
+
 
 class EventDetails : Fragment(R.layout.fragment_event_details) {
     private lateinit var binding: FragmentEventDetailsBinding
@@ -53,8 +55,18 @@ class EventDetails : Fragment(R.layout.fragment_event_details) {
             binding.txtEventDescription.text = description
             binding.txtEventDate.text = util.convertDate(date)
             binding.txtEventPrice.text = price
+
+            setEventThumbnail(image)
         }
     }
 
     private fun getEventId() = arguments?.getString("id")!!
+
+    private fun setEventThumbnail(url: String) {
+        GlideApp.with(requireView())
+            .load(url)
+            .placeholder(R.drawable.ic_no_image)
+            .error(R.drawable.ic_no_image)
+            .into(binding.imgEventThumbnail)
+    }
 }

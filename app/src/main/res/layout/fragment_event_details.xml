@@ -22,9 +22,11 @@
 
             <ImageView
                 android:id="@+id/imgEventThumbnail"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
                 android:contentDescription="@string/cd_img_event"
+                android:scaleType="fitXY"
                 android:src="@drawable/ic_no_image"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

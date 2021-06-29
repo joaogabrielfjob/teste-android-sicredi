@@ -8,5 +8,10 @@
     <string name="btn_show_more_text_label">mostrar mais</string>
     <string name="btn_show_less_text_label">mostrar menos</string>
     <string name="btn_check_in_label">Check-in</string>
-    <string name="btn_share_label">Compartilhar</string>
+    <string name="btn_share_label">Compartilhar</string>\
+
+    <!-- Event Check-in -->
+    <string name="input_hint_name">Nome</string>
+    <string name="input_hint_email">Email</string>
+    <string name="btn_confirm_label">Confirmar</string>
 </resources>

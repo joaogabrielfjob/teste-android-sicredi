@@ -1,17 +1,20 @@
 package br.com.testesicredi.adapter
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
+import br.com.testesicredi.R
 import br.com.testesicredi.databinding.RecyclerViewEventBinding
 import br.com.testesicredi.model.Event
-import java.text.SimpleDateFormat
-import java.util.*
-import java.util.concurrent.TimeUnit
+import br.com.testesicredi.util.Util
 import kotlin.collections.ArrayList
 
 class EventsAdapter: RecyclerView.Adapter<EventsAdapter.ActivityViewHolder>() {
     private val events = ArrayList<Event>()
+    private val util = Util()
 
     inner class ActivityViewHolder(val binding: RecyclerViewEventBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -27,11 +30,10 @@ class EventsAdapter: RecyclerView.Adapter<EventsAdapter.ActivityViewHolder>() {
     override fun onBindViewHolder(holder: EventsAdapter.ActivityViewHolder, position: Int) {
         with(holder) {
             with(events[position]) {
-                val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
-                val dateConverted = Date(TimeUnit.SECONDS.toMillis(date))
-
                 binding.txtEventTitle.text = title
-                binding.txtEventDate.text = dateFormat.format(dateConverted)
+                binding.txtEventDate.text = util.convertDate(date)
+
+                binding.cardEvent.setOnClickListener { openEventDetails(itemView, id) }
             }
         }
     }
@@ -49,4 +51,10 @@ class EventsAdapter: RecyclerView.Adapter<EventsAdapter.ActivityViewHolder>() {
     }
 
     fun clear() = events.clear()
+
+    private fun openEventDetails(view: View, id: String) {
+        val bundle = bundleOf("id" to id)
+
+        Navigation.findNavController(view).navigate(R.id.eventsToEventDetails, bundle)
+    }
 }

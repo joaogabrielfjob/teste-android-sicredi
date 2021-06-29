@@ -26,7 +26,7 @@ class Events : Fragment(R.layout.fragment_events) {
 
     private fun eventsResponse() {
         eventsViewModel.eventsResponse.observe(viewLifecycleOwner, { response ->
-            when(response) {
+            when (response) {
                 is ArrayList<Event> -> setEvents(response)
 
                 else -> println("exception $response")

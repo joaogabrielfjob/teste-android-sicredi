@@ -1,27 +1,26 @@
 package br.com.testesicredi.viewmodel
 
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import br.com.testesicredi.data.repository.EventsRepository
-import br.com.testesicredi.model.Event
+import br.com.testesicredi.model.EventDetails
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class EventsViewModel : ViewModel() {
+class EventDetailsViewModel {
     private val eventsRepository = EventsRepository().makeRequest()
-    val eventsResponse= MutableLiveData<ArrayList<Event>>()
+    val eventResponse = MutableLiveData<EventDetails>()
 
-    fun getAllEvents() {
+    fun getEventDetails(id: String) {
         CoroutineScope(Dispatchers.IO).launch {
             try {
-                val response = eventsRepository.getAllEvents()
+                val response = eventsRepository.getEventDetailsById(id)
 
-                eventsResponse.postValue(response)
+                eventResponse.postValue(response)
             } catch (exception: Exception) {
                 println("exception $exception")
 
-                eventsResponse.postValue(null)
+                eventResponse.postValue(null)
             }
         }
     }

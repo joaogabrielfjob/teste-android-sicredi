@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="internet_exception_title">Erro de conexão</string>
+    <string name="internet_exception_msg">Não foi possível se conectar a internet para realizar a requisição dos dados, tente novamente.</string>
+
+    <string name="http_exception_title">Erro no serviço</string>
+    <string name="http_exception_msg">Não foi possível buscar os eventos no momento, tente novamente.</string>
+
+    <string name="generic_exception_title">Erro</string>
+    <string name="generic_exception_msg">Algo inesperado aconteceu, tente novamente.</string>
+</resources>

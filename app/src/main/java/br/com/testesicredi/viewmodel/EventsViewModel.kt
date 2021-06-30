@@ -10,7 +10,8 @@ import kotlinx.coroutines.launch
 
 class EventsViewModel : ViewModel() {
     private val eventsRepository = EventsRepository().makeRequest()
-    val eventsResponse= MutableLiveData<ArrayList<Event>>()
+    val eventsResponse = MutableLiveData<ArrayList<Event>>()
+    val exceptionResponse = MutableLiveData<Exception>()
 
     fun getAllEvents() {
         CoroutineScope(Dispatchers.IO).launch {
@@ -19,9 +20,7 @@ class EventsViewModel : ViewModel() {
 
                 eventsResponse.postValue(response)
             } catch (exception: Exception) {
-                println("exception $exception")
-
-                eventsResponse.postValue(null)
+                exceptionResponse.postValue(exception)
             }
         }
     }

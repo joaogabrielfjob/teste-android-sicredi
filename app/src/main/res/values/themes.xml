@@ -13,4 +13,16 @@
 
         <item name="android:textColor">@color/black</item>
     </style>
+
+    <!-- Material Dialog Style (Error) -->
+    <style name="ErrorDialogTheme" parent="ThemeOverlay.MaterialComponents.MaterialAlertDialog">
+        <item name="materialAlertDialogTitleTextStyle">@style/TitleTextStyle</item>
+        <item name="colorPrimary">@color/red</item>
+    </style>
+
+    <style name="TitleTextStyle" parent="MaterialAlertDialog.MaterialComponents.Title.Text">
+        <item name="android:textColor">@color/red</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">@font/montserrat_500</item>
+    </style>
 </resources>

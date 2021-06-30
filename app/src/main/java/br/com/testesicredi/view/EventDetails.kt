@@ -92,13 +92,16 @@ class EventDetails : Fragment(R.layout.fragment_event_details) {
 
     private fun setEventDetails(eventDetails: EventDetails) {
         with(eventDetails) {
-            binding.txtEventTitle.text = title
-            binding.txtEventDescription.text = description
-            binding.txtEventDate.text = util.convertDate(date)
-            binding.txtEventPrice.text = price
+            binding.txtEventTitle.text = title ?: "Sem título"
+            binding.txtEventDescription.text = description ?: "Sem descrição"
 
-            setEventThumbnail(image)
-            setEventLocation(latitude, longitude)
+            image?.let {
+                setEventThumbnail(image)
+            }
+
+            validEventPrice(price)
+            validEventDate(date)
+            validEventLocation(latitude, longitude)
             showMoreOrLessDescription()
 
             binding.containerEventDetails.visibility = View.VISIBLE
@@ -145,5 +148,35 @@ class EventDetails : Fragment(R.layout.fragment_event_details) {
                 openEvents()
             }
             .show()
+    }
+
+    fun validEventPrice(price: String?) {
+        if (price != null) {
+            binding.txtEventPrice.text = price
+            binding.imgPrice.visibility = View.VISIBLE
+        } else {
+            binding.imgPrice.visibility = View.INVISIBLE
+        }
+    }
+
+    fun validEventDate(date: Long?) {
+        if (date != null) {
+            binding.txtEventDate.text = util.convertDate(date)
+
+            binding.txtEventDate.visibility = View.VISIBLE
+            binding.imgCalendar.visibility = View.VISIBLE
+        } else {
+            binding.txtEventDate.visibility = View.INVISIBLE
+            binding.imgCalendar.visibility = View.INVISIBLE
+        }
+    }
+
+    fun validEventLocation(latitude: Double?, longitude: Double?) {
+        if (latitude != null && longitude != null) {
+            setEventLocation(latitude, longitude)
+            binding.imgLocation.visibility = View.VISIBLE
+        } else {
+            binding.imgLocation.visibility = View.INVISIBLE
+        }
     }
 }

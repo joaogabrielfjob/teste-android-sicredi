@@ -1,8 +1,10 @@
 package br.com.testesicredi.util
 
 import android.content.Context
+import android.view.View
 import androidx.core.content.ContextCompat
 import br.com.testesicredi.R
+import br.com.testesicredi.databinding.FragmentEventDetailsBinding
 import com.google.android.material.textfield.TextInputLayout
 import java.text.SimpleDateFormat
 import java.util.Date

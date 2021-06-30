@@ -14,6 +14,9 @@
     <string name="btn_check_in_label">Check-in</string>
     <string name="btn_share_label">Compartilhar</string>
     <string name="event_location_title">Localização do evento</string>
+    <string name="share_body">Evento: %1s\nData do evento: %2s\nPara saber mais acesse: http://5f5a8f24d44d640016169133.mockapi.io/api/events/%3$s</string>
+    <string name="share_no_title">Sem título</string>
+    <string name="share_no_date">Sem data</string>
 
     <!-- Event Check-in -->
     <string name="input_hint_name">Nome</string>

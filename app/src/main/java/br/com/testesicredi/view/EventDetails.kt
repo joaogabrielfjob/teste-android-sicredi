@@ -8,6 +8,7 @@ import android.view.View
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.navArgs
 import br.com.testesicredi.R
 import br.com.testesicredi.databinding.FragmentEventDetailsBinding
 import br.com.testesicredi.model.EventDetails
@@ -23,6 +24,7 @@ class EventDetails : Fragment(R.layout.fragment_event_details) {
     private lateinit var binding: FragmentEventDetailsBinding
     private val eventDetailsViewModel = EventDetailsViewModel()
     private val util = Util()
+    private val args: EventDetailsArgs by navArgs()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -32,9 +34,10 @@ class EventDetails : Fragment(R.layout.fragment_event_details) {
         binding.btnCheckIn.setOnClickListener { openCheckIn() }
 
         val eventId = getEventId()
+        val eventIdFromDeepLink = args.id
 
-        if (eventId != null) {
-            eventDetailsViewModel.getEventDetails(eventId)
+        if (eventId != null || eventIdFromDeepLink != null) {
+            eventDetailsViewModel.getEventDetails(eventId ?: eventIdFromDeepLink!!)
             eventDetailsResponse()
             exceptionResponse()
         } else {
@@ -107,6 +110,7 @@ class EventDetails : Fragment(R.layout.fragment_event_details) {
             showMoreOrLessDescription()
 
             binding.containerEventDetails.visibility = View.VISIBLE
+            binding.btnShare.setOnClickListener { shareEvent(eventDetails) }
         }
     }
 
@@ -190,5 +194,23 @@ class EventDetails : Fragment(R.layout.fragment_event_details) {
 
         mapIntent.setPackage("com.google.android.apps.maps")
         startActivity(mapIntent)
+    }
+
+    private fun shareEvent(eventDetails: EventDetails) {
+        val sendIntent = Intent()
+        val title = eventDetails.title ?: getString(R.string.share_no_title)
+        var date = getString(R.string.share_no_date)
+
+        eventDetails.date?.let {
+           date = util.convertDate(it)
+        }
+
+        val msg = String.format(getString(R.string.share_body), title, date, eventDetails.id)
+
+        sendIntent.action = Intent.ACTION_SEND
+        sendIntent.putExtra(Intent.EXTRA_TEXT, msg)
+        sendIntent.type = "text/plain"
+
+        startActivity(sendIntent)
     }
 }

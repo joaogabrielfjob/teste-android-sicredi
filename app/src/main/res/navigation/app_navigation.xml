@@ -30,7 +30,7 @@
         android:id="@+id/eventDetails"
         android:name="br.com.testesicredi.view.EventDetails"
         android:label="EventDetails"
-        tools:layout="@layout/fragment_event_details" >
+        tools:layout="@layout/fragment_event_details">
         <action
             android:id="@+id/eventDetailsToCheckIn"
             app:destination="@id/checkIn" />
@@ -38,6 +38,16 @@
         <action
             android:id="@+id/eventDetailsToEvents"
             app:destination="@id/events" />
+
+        <argument
+            android:name="id"
+            android:defaultValue="@null"
+            app:argType="string"
+            app:nullable="true" />
+
+        <deepLink
+            android:id="@+id/deepLink"
+            app:uri="http://5f5a8f24d44d640016169133.mockapi.io/api/events/{id}" />
     </fragment>
 
     <fragment

@@ -11,6 +11,7 @@ import kotlinx.coroutines.launch
 class CheckInViewModel : ViewModel() {
     private val eventsRepository = EventsRepository().makeRequest()
     val checkInResponse = MutableLiveData<Boolean>()
+    val exceptionResponse = MutableLiveData<Exception>()
 
     fun checkIn(eventCheckIn: EventCheckIn) {
         CoroutineScope(Dispatchers.IO).launch {
@@ -18,9 +19,7 @@ class CheckInViewModel : ViewModel() {
                 eventsRepository.checkIn(eventCheckIn)
                 checkInResponse.postValue(true)
             } catch (exception: Exception) {
-                println("exception $exception")
-
-                checkInResponse.postValue(null)
+                exceptionResponse.postValue(exception)
             }
         }
     }

@@ -17,8 +17,8 @@ class CheckInViewModel : ViewModel() {
             try {
                 eventsRepository.checkIn(eventCheckIn)
                 checkInResponse.postValue(true)
-            } catch (excetpion: Exception) {
-                println("exception $excetpion")
+            } catch (exception: Exception) {
+                println("exception $exception")
 
                 checkInResponse.postValue(null)
             }

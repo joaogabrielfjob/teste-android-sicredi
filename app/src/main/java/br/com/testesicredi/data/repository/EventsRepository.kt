@@ -7,7 +7,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 class EventsRepository {
 
     fun makeRequest(): EventsAPI {
-        val baseUrl = "https://5f5a8f24d44d640016169133.mockapi.io/api/"
+        val baseUrl = "http://5f5a8f24d44d640016169133.mockapi.io/api/"
 
         return Retrofit
             .Builder()

@@ -1,8 +1,12 @@
 <resources>
     <string name="app_name">Evnts</string>
 
-    <!-- Recycler View Events -->
+    <!-- Events -->
     <string name="btn_show_more_details_label">Detalhes</string>
+    <string name="btn_refresh_label">Atualizar</string>
+
+    <string name="events_blank_state_title">Oops...</string>
+    <string name="events_blank_state_msg">Parece que não temos nenhum evento ainda.</string>
 
     <!-- Event Details -->
     <string name="btn_show_more_text_label">mostrar mais</string>

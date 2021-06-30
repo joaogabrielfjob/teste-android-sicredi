@@ -20,6 +20,7 @@ class EventsViewModel : ViewModel() {
 
                 eventsResponse.postValue(response)
             } catch (exception: Exception) {
+                println(exception)
                 exceptionResponse.postValue(exception)
             }
         }

@@ -12,6 +12,9 @@ import br.com.testesicredi.model.EventDetails
 import br.com.testesicredi.util.GlideApp
 import br.com.testesicredi.util.Util
 import br.com.testesicredi.viewmodel.EventDetailsViewModel
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import retrofit2.HttpException
+import java.io.IOException
 import java.util.*
 
 class EventDetails : Fragment(R.layout.fragment_event_details) {
@@ -26,8 +29,18 @@ class EventDetails : Fragment(R.layout.fragment_event_details) {
         binding.btnGoBack.setOnClickListener { openEvents() }
         binding.btnCheckIn.setOnClickListener { openCheckIn() }
 
-        eventDetailsViewModel.getEventDetails(getEventId())
-        eventDetailsResponse()
+        val eventId = getEventId()
+
+        if (eventId != null) {
+            eventDetailsViewModel.getEventDetails(eventId)
+            eventDetailsResponse()
+            exceptionResponse()
+        } else {
+            showErrorDialog(
+                getString(R.string.generic_exception_title),
+                getString(R.string.generic_exception_msg)
+            )
+        }
     }
 
     private fun openEvents() {
@@ -44,9 +57,36 @@ class EventDetails : Fragment(R.layout.fragment_event_details) {
         eventDetailsViewModel.eventDetailsResponse.observe(viewLifecycleOwner, { response ->
             when (response) {
                 is EventDetails -> setEventDetails(response)
-
-                else -> println("exception $response")
             }
+        })
+    }
+
+    private fun exceptionResponse() {
+        eventDetailsViewModel.exceptionResponse.observe(viewLifecycleOwner, { exception ->
+            when (exception) {
+                is IOException -> {
+                    showErrorDialog(
+                        getString(R.string.internet_exception_title),
+                        getString(R.string.internet_exception_msg)
+                    )
+                }
+
+                is HttpException -> {
+                    showErrorDialog(
+                        getString(R.string.http_exception_title),
+                        getString(R.string.http_exception_msg)
+                    )
+                }
+
+                else -> {
+                    showErrorDialog(
+                        getString(R.string.generic_exception_title),
+                        getString(R.string.generic_exception_msg)
+                    )
+                }
+            }
+
+            binding.containerEventDetails.visibility = View.INVISIBLE
         })
     }
 
@@ -60,10 +100,12 @@ class EventDetails : Fragment(R.layout.fragment_event_details) {
             setEventThumbnail(image)
             setEventLocation(latitude, longitude)
             showMoreOrLessDescription()
+
+            binding.containerEventDetails.visibility = View.VISIBLE
         }
     }
 
-    private fun getEventId() = arguments?.getString("id")!!
+    private fun getEventId() = arguments?.getString("id")
 
     private fun setEventThumbnail(url: String) {
         GlideApp.with(requireView())
@@ -92,5 +134,16 @@ class EventDetails : Fragment(R.layout.fragment_event_details) {
                 btnShowMore.text = getString(R.string.btn_show_more_text_label)
             }
         }
+    }
+
+    private fun showErrorDialog(title: String, message: String) {
+        MaterialAlertDialogBuilder(requireContext(), R.style.ErrorDialogTheme)
+            .setTitle(title)
+            .setMessage(message)
+            .setPositiveButton("OK") { d, _ ->
+                d.dismiss()
+                openEvents()
+            }
+            .show()
     }
 }

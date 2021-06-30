@@ -18,7 +18,7 @@ import br.com.testesicredi.viewmodel.EventDetailsViewModel
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import retrofit2.HttpException
 import java.io.IOException
-import java.util.*
+import java.util.Locale
 
 class EventDetails : Fragment(R.layout.fragment_event_details) {
     private lateinit var binding: FragmentEventDetailsBinding

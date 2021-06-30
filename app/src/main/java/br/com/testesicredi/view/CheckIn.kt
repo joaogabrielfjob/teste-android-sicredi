@@ -1,6 +1,8 @@
 package br.com.testesicredi.view
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
@@ -8,6 +10,7 @@ import androidx.navigation.Navigation
 import br.com.testesicredi.R
 import br.com.testesicredi.databinding.FragmentCheckInBinding
 import br.com.testesicredi.model.EventCheckIn
+import br.com.testesicredi.util.Util
 import br.com.testesicredi.viewmodel.CheckInViewModel
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import retrofit2.HttpException
@@ -16,6 +19,7 @@ import java.io.IOException
 class CheckIn : Fragment(R.layout.fragment_check_in) {
     private lateinit var binding: FragmentCheckInBinding
     private val checkInViewModel = CheckInViewModel()
+    private val util = Util()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -26,6 +30,8 @@ class CheckIn : Fragment(R.layout.fragment_check_in) {
 
         exceptionResponse()
         checkInResponse()
+
+        hideErrorMessageWhenType()
     }
 
     private fun openEventDetails() {
@@ -77,9 +83,11 @@ class CheckIn : Fragment(R.layout.fragment_check_in) {
             val name = binding.inputName.text.toString()
             val email = binding.inputEmail.text.toString()
 
-            val eventCheckIn = EventCheckIn(eventId, name, email)
+            if (checkFields(name, email)) {
+                val eventCheckIn = EventCheckIn(eventId, name, email)
 
-            checkInViewModel.checkIn(eventCheckIn)
+                checkInViewModel.checkIn(eventCheckIn)
+            }
         } else {
             showErrorDialog(
                 getString(R.string.generic_exception_title),
@@ -97,5 +105,44 @@ class CheckIn : Fragment(R.layout.fragment_check_in) {
                 openEventDetails()
             }
             .show()
+    }
+
+    private fun checkFields(name: String?, email: String?): Boolean {
+        if (name.isNullOrEmpty() || util.isNameInvalid(name)) {
+            util.setErrorStatus(binding.filledTextFieldName,
+                requireContext(),
+                getString(R.string.txt_valid_name)
+            )
+
+            return false
+        }
+
+        if (email.isNullOrEmpty() || util.isEmailInvalid(email)) {
+            util.setErrorStatus(binding.filledTextFieldEmail,
+                requireContext(),
+                getString(R.string.txt_valid_email)
+            )
+
+            return false
+        }
+
+        return true
+    }
+
+    private fun hideErrorMessageWhenType() {
+        val editInputs = listOf(binding.inputName, binding.inputEmail)
+
+        for (editInput in editInputs) {
+            editInput.addTextChangedListener(object : TextWatcher {
+                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) { }
+
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                    util.setNormalStatus(binding.filledTextFieldName, requireContext())
+                    util.setNormalStatus(binding.filledTextFieldEmail, requireContext())
+                }
+
+                override fun afterTextChanged(s: Editable?) { }
+            })
+        }
     }
 }

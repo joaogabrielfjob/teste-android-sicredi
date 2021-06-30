@@ -8,4 +8,7 @@
 
     <string name="generic_exception_title">Erro</string>
     <string name="generic_exception_msg">Algo inesperado aconteceu, tente novamente.</string>
+
+    <string name="txt_valid_name">Digite um nome válido.</string>
+    <string name="txt_valid_email">Digite um email válido.</string>
 </resources>

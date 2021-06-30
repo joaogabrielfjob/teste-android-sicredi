@@ -59,6 +59,7 @@ class EventDetails : Fragment(R.layout.fragment_event_details) {
 
             setEventThumbnail(image)
             setEventLocation(latitude, longitude)
+            showMoreOrLessDescription()
         }
     }
 
@@ -77,5 +78,19 @@ class EventDetails : Fragment(R.layout.fragment_event_details) {
         val eventLocation = geoDecoder.getFromLocation(latitude, longitude, 1)
 
         binding.txtEventLocation.text = eventLocation[0].getAddressLine(0)
+    }
+
+    private fun showMoreOrLessDescription() {
+        val btnShowMore = binding.btnShowEventDescription
+
+        btnShowMore.setOnClickListener {
+            if (btnShowMore.text.equals(getString(R.string.btn_show_more_text_label))) {
+                binding.txtEventDescription.maxLines = Int.MAX_VALUE
+                btnShowMore.text = getString(R.string.btn_show_less_text_label)
+            } else {
+                binding.txtEventDescription.maxLines = 3
+                btnShowMore.text = getString(R.string.btn_show_more_text_label)
+            }
+        }
     }
 }

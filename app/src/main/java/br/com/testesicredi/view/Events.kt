@@ -39,6 +39,13 @@ class Events : Fragment(R.layout.fragment_events) {
                         setBlankState()
                     }
                 }
+
+                else -> {
+                    showErrorDialog(
+                        getString(R.string.generic_exception_title),
+                        getString(R.string.generic_exception_msg)
+                    )
+                }
             }
         })
     }

@@ -48,5 +48,10 @@
         <action
             android:id="@+id/checkInToEventDetails"
             app:destination="@id/eventDetails" />
+
+        <action
+            android:id="@+id/checkInToEvents"
+            app:destination="@id/events" />
     </fragment>
+
 </navigation>

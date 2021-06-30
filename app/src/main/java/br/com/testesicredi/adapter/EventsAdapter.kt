@@ -30,8 +30,11 @@ class EventsAdapter: RecyclerView.Adapter<EventsAdapter.ActivityViewHolder>() {
     override fun onBindViewHolder(holder: EventsAdapter.ActivityViewHolder, position: Int) {
         with(holder) {
             with(events[position]) {
-                binding.txtEventTitle.text = title
-                binding.txtEventDate.text = util.convertDate(date)
+                binding.txtEventTitle.text = title ?: "Título do evento"
+
+                date?.let {
+                    binding.txtEventDate.text = util.convertDate(it)
+                }
 
                 binding.cardEvent.setOnClickListener { openEventDetails(itemView, id) }
             }
@@ -52,7 +55,7 @@ class EventsAdapter: RecyclerView.Adapter<EventsAdapter.ActivityViewHolder>() {
 
     fun clear() = events.clear()
 
-    private fun openEventDetails(view: View, id: String) {
+    private fun openEventDetails(view: View, id: String?) {
         val bundle = bundleOf("id" to id)
 
         Navigation.findNavController(view).navigate(R.id.eventsToEventDetails, bundle)

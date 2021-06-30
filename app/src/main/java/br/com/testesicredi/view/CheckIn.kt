@@ -41,10 +41,14 @@ class CheckIn : Fragment(R.layout.fragment_check_in) {
         Navigation.findNavController(requireView()).navigate(R.id.checkInToEventDetails, bundle)
     }
 
+    private fun openEvents() {
+        Navigation.findNavController(requireView()).navigate(R.id.checkInToEvents)
+    }
+
     private fun checkInResponse() {
         checkInViewModel.checkInResponse.observe(viewLifecycleOwner, { response ->
             when (response) {
-                is Boolean -> if (response) println("response $response")
+                is Boolean -> if (response) openEvents()
             }
         })
     }

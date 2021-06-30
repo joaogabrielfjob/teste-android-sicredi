@@ -5,4 +5,5 @@
     <string name="cd_img_event">Thumbnail do evento</string>
     <string name="cd_img_calendar">Ícone calendário</string>
     <string name="cd_img_price">Ícone da moeda corrente</string>
+    <string name="cd_img_location">Ícone do marcador de localização do evento</string>
 </resources>

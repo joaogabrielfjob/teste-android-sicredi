@@ -1,5 +1,6 @@
 package br.com.testesicredi.view
 
+import android.location.Geocoder
 import android.os.Bundle
 import android.view.View
 import androidx.core.os.bundleOf
@@ -11,7 +12,7 @@ import br.com.testesicredi.model.EventDetails
 import br.com.testesicredi.util.GlideApp
 import br.com.testesicredi.util.Util
 import br.com.testesicredi.viewmodel.EventDetailsViewModel
-
+import java.util.*
 
 class EventDetails : Fragment(R.layout.fragment_event_details) {
     private lateinit var binding: FragmentEventDetailsBinding
@@ -57,6 +58,7 @@ class EventDetails : Fragment(R.layout.fragment_event_details) {
             binding.txtEventPrice.text = price
 
             setEventThumbnail(image)
+            setEventLocation(latitude, longitude)
         }
     }
 
@@ -68,5 +70,12 @@ class EventDetails : Fragment(R.layout.fragment_event_details) {
             .placeholder(R.drawable.ic_no_image)
             .error(R.drawable.ic_no_image)
             .into(binding.imgEventThumbnail)
+    }
+
+    private fun setEventLocation(latitude: Double, longitude: Double) {
+        val geoDecoder = Geocoder(requireContext(), Locale.getDefault())
+        val eventLocation = geoDecoder.getFromLocation(latitude, longitude, 1)
+
+        binding.txtEventLocation.text = eventLocation[0].getAddressLine(0)
     }
 }

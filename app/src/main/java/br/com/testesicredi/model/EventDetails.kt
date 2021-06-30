@@ -7,6 +7,6 @@ data class EventDetails(
     val people: ArrayList<People>,
     val description: String,
     val image: String,
-    val longitute: Double,
+    val longitude: Double,
     val latitude: Double,
 )

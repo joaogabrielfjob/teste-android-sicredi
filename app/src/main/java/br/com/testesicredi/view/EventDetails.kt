@@ -1,6 +1,8 @@
 package br.com.testesicredi.view
 
+import android.content.Intent
 import android.location.Geocoder
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import androidx.core.os.bundleOf
@@ -123,6 +125,7 @@ class EventDetails : Fragment(R.layout.fragment_event_details) {
         val eventLocation = geoDecoder.getFromLocation(latitude, longitude, 1)
 
         binding.txtEventLocation.text = eventLocation[0].getAddressLine(0)
+        binding.txtEventLocation.setOnClickListener { openEventLocationOnMaps(latitude, longitude) }
     }
 
     private fun showMoreOrLessDescription() {
@@ -150,7 +153,7 @@ class EventDetails : Fragment(R.layout.fragment_event_details) {
             .show()
     }
 
-    fun validEventPrice(price: String?) {
+    private fun validEventPrice(price: String?) {
         if (price != null) {
             binding.txtEventPrice.text = price
             binding.imgPrice.visibility = View.VISIBLE
@@ -159,7 +162,7 @@ class EventDetails : Fragment(R.layout.fragment_event_details) {
         }
     }
 
-    fun validEventDate(date: Long?) {
+    private fun validEventDate(date: Long?) {
         if (date != null) {
             binding.txtEventDate.text = util.convertDate(date)
 
@@ -171,12 +174,21 @@ class EventDetails : Fragment(R.layout.fragment_event_details) {
         }
     }
 
-    fun validEventLocation(latitude: Double?, longitude: Double?) {
+    private fun validEventLocation(latitude: Double?, longitude: Double?) {
         if (latitude != null && longitude != null) {
             setEventLocation(latitude, longitude)
+
             binding.imgLocation.visibility = View.VISIBLE
         } else {
             binding.imgLocation.visibility = View.INVISIBLE
         }
+    }
+
+    private fun openEventLocationOnMaps(latitude: Double, longitude: Double) {
+        val mapUri = Uri.parse("geo:0,0?q=$latitude,$longitude")
+        val mapIntent = Intent(Intent.ACTION_VIEW, mapUri)
+
+        mapIntent.setPackage("com.google.android.apps.maps")
+        startActivity(mapIntent)
     }
 }

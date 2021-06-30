@@ -16,7 +16,12 @@ class CheckInViewModel : ViewModel() {
     fun checkIn(eventCheckIn: EventCheckIn) {
         CoroutineScope(Dispatchers.IO).launch {
             try {
-                eventsRepository.checkIn(eventCheckIn)
+                val response = eventsRepository.checkIn(eventCheckIn)
+
+                if (response.code() != 201) {
+                    throw Exception()
+                }
+
                 checkInResponse.postValue(true)
             } catch (exception: Exception) {
                 exceptionResponse.postValue(exception)

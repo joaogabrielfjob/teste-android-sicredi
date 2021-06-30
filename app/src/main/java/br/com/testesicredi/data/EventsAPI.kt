@@ -18,5 +18,5 @@ interface EventsAPI {
     suspend fun getEventDetailsById(@Path("id") id: String): EventDetails
 
     @POST("checkin/")
-    suspend fun checkIn(@Body eventCheckIn: EventCheckIn)
+    suspend fun checkIn(@Body eventCheckIn: EventCheckIn): Response<*>
 }

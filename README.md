@@ -26,4 +26,6 @@ Para a arquitetura eu optei por seguir a estrutura do Model View ViewModel (MVVM
 </span>
 
 # Demonstração
-![demo_evnts](https://user-images.githubusercontent.com/37043322/124142933-0c6bb400-da61-11eb-9965-5cda2f455efd.gif)
+![Demo Evnts Light Theme](https://user-images.githubusercontent.com/37043322/124142933-0c6bb400-da61-11eb-9965-5cda2f455efd.gif)
+![Demo Evnts Dark Theme](https://user-images.githubusercontent.com/37043322/124166123-e225f080-da78-11eb-87f0-6019ac287692.gif)
+> **Observação:** Como isso é um GIF as cores não são 100% fiéis

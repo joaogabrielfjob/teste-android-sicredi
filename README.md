@@ -26,3 +26,4 @@ Para a arquitetura eu optei por seguir a estrutura do Model View ViewModel (MVVM
 </span>
 
 # Demonstração
+![demo_evnts](https://user-images.githubusercontent.com/37043322/124142933-0c6bb400-da61-11eb-9965-5cda2f455efd.gif)

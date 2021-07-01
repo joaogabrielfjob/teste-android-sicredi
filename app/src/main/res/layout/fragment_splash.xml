@@ -9,9 +9,10 @@
 
     <ImageView
         android:id="@+id/imgSplashApp"
-        android:contentDescription="@string/cd_img_splash_app"
+        style="@style/Images"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:contentDescription="@string/cd_img_splash_app"
         android:src="@drawable/ic_app"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

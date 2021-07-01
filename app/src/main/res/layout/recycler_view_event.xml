@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView
-    android:id="@+id/cardEvent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardEvent"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:cardBackgroundColor="@android:color/white"
     app:cardElevation="8dp"
-    app:cardUseCompatPadding="true" >
+    app:cardUseCompatPadding="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -59,17 +59,12 @@
 
         <Button
             android:id="@+id/btnEventShowDetails"
-            style="@style/Widget.MaterialComponents.Button.TextButton"
+            style="@style/ButtonDetails"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/montserrat_400"
             android:text="@string/btn_show_more_details_label"
-            android:textAllCaps="false"
-            android:textColor="@color/black"
-            android:textSize="12sp"
             app:icon="@drawable/ic_arrow_next"
-            app:iconGravity="end"
-            app:iconTintMode="multiply"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"

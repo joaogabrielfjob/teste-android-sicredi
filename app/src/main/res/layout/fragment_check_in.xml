@@ -9,6 +9,7 @@
 
     <ImageButton
         android:id="@+id/btnGoBack"
+        style="@style/ButtonGoBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -31,6 +32,7 @@
         android:layout_marginTop="80dp"
         android:layout_marginEnd="42dp"
         android:hint="@string/input_hint_name"
+        android:theme="@style/TextBox"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -39,13 +41,11 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/inputName"
+            style="@style/TextInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
-            android:cursorVisible="true"
-            android:imeOptions="actionNext"
-            android:inputType="text"
-            android:textColor="@color/black" />
+            android:imeOptions="actionNext" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -55,6 +55,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
         android:hint="@string/input_hint_email"
+        android:theme="@style/TextBox"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/filledTextFieldName"
         app:layout_constraintStart_toStartOf="@+id/filledTextFieldName"
@@ -63,24 +64,21 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/inputEmail"
+            style="@style/TextInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
-            android:imeOptions="actionDone"
-            android:inputType="text"
-            android:textColor="@color/black" />
+            android:imeOptions="actionDone" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/btnConfirmCheckIn"
+        style="@style/ButtonRefresh"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
-        android:fontFamily="@font/montserrat_700"
         android:text="@string/btn_confirm_label"
-        android:textColor="@color/white"
-        app:backgroundTint="@color/green"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

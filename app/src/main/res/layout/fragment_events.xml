@@ -77,13 +77,10 @@
 
         <Button
             android:id="@+id/btnRefresh"
+            style="@style/ButtonRefresh"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:background="@color/green"
-            android:fontFamily="@font/montserrat_700"
             android:text="@string/btn_refresh_label"
-            android:textColor="@color/white"
-            app:backgroundTint="@color/green"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

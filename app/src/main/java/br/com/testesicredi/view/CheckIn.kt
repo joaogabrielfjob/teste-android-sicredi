@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
+import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
@@ -48,7 +49,13 @@ class CheckIn : Fragment(R.layout.fragment_check_in) {
     private fun checkInResponse() {
         checkInViewModel.checkInResponse.observe(viewLifecycleOwner, { response ->
             when (response) {
-                is Boolean -> if (response) openEvents()
+                is Boolean -> {
+                    if (response) {
+                        Toast.makeText(requireContext(), getString(R.string.toast_success), Toast.LENGTH_LONG).show()
+
+                        openEvents()
+                    }
+                }
             }
         })
     }
@@ -91,6 +98,7 @@ class CheckIn : Fragment(R.layout.fragment_check_in) {
                 val eventCheckIn = EventCheckIn(eventId, name, email)
 
                 checkInViewModel.checkIn(eventCheckIn)
+                binding.btnConfirmCheckIn.isEnabled = false
             }
         } else {
             showErrorDialog(

@@ -32,22 +32,22 @@
             android:id="@+id/imgBlankState"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="80dp"
+            android:layout_marginTop="@dimen/margin_over_components"
             android:contentDescription="@string/cd_img_blank_state"
-            app:srcCompat="@drawable/ic_no_events"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/ic_no_events" />
 
         <TextView
             android:id="@+id/txtBlankStateTitle"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/match_constraint"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="@dimen/space_between_elements"
             android:layout_marginTop="32dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginEnd="@dimen/space_between_elements"
             android:fontFamily="@font/montserrat_500"
             android:gravity="center"
             android:text="@string/events_blank_state_title"
@@ -60,11 +60,11 @@
 
         <TextView
             android:id="@+id/txtBlankStateMsg"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/match_constraint"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginStart="@dimen/space_between_elements"
+            android:layout_marginTop="@dimen/space_between_elements"
+            android:layout_marginEnd="@dimen/space_between_elements"
             android:fontFamily="@font/montserrat_400"
             android:gravity="center"
             android:text="@string/events_blank_state_msg"
@@ -78,7 +78,7 @@
         <Button
             android:id="@+id/btnRefresh"
             style="@style/ButtonRefresh"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/match_constraint"
             android:layout_height="wrap_content"
             android:text="@string/btn_refresh_label"
             app:layout_constraintBottom_toBottomOf="parent"

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="space_between_elements">16dp</dimen>
+    <dimen name="space_between_parent_elements">8dp</dimen>
+    <dimen name="match_constraint">0dp</dimen>
+    <dimen name="elevation_sides">0dp</dimen>
+    <dimen name="margin_over_components">80dp</dimen>
+</resources>

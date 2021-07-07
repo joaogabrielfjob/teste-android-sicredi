@@ -12,24 +12,24 @@
         style="@style/ButtonGoBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="@dimen/space_between_elements"
+        android:layout_marginTop="@dimen/space_between_elements"
         android:background="@android:color/transparent"
         android:contentDescription="@string/cd_img_btn_go_back"
-        app:srcCompat="@drawable/ic_arrow_back"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/ic_arrow_back" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/filledTextFieldName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="42dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="@dimen/margin_over_components"
         android:layout_marginEnd="42dp"
         android:hint="@string/input_hint_name"
         android:theme="@style/TextBox"
@@ -51,7 +51,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/filledTextFieldEmail"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/match_constraint"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
         android:hint="@string/input_hint_email"
@@ -77,7 +77,7 @@
         style="@style/ButtonRefresh"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="@dimen/margin_over_components"
         android:text="@string/btn_confirm_label"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

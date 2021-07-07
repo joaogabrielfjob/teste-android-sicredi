@@ -2,7 +2,7 @@
   <img src="https://i.imgur.com/B0kfF2t.png" /> <br/>
   
   <img src="https://img.shields.io/badge/kotlin-1.5.20-orange?link=https://kotlinlang.org/&link=http://right" />
-  <img src="https://img.shields.io/badge/gradle-4.2.1-lightgrey" />
+  <img src="https://img.shields.io/badge/gradle-4.2.2-lightgrey" />
   <img src="https://img.shields.io/badge/sdk-19-green" />
 </h1>
 

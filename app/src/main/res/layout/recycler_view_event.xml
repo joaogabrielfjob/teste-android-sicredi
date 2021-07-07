@@ -16,9 +16,9 @@
 
         <View
             android:id="@+id/divider"
+            style="@style/SideBar"
             android:layout_width="5dp"
             android:layout_height="0dp"
-            android:background="@drawable/side_bar_rview_event"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"

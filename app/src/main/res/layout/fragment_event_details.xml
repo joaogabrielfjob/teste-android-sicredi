@@ -5,7 +5,7 @@
     android:id="@+id/containerEventDetails"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:visibility="gone">
+    android:visibility="visible">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -27,10 +27,10 @@
                 android:background="@color/white"
                 android:contentDescription="@string/cd_img_event"
                 android:scaleType="fitXY"
-                android:src="@drawable/ic_no_image"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_no_image" />
 
             <ImageButton
                 android:id="@+id/btnGoBack"
@@ -40,17 +40,17 @@
                 android:layout_marginTop="24dp"
                 android:background="@android:color/transparent"
                 android:contentDescription="@string/cd_img_btn_go_back"
-                android:src="@drawable/ic_arrow_back"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintVertical_bias="0.0"
+                app:srcCompat="@drawable/ic_arrow_back" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                style="@style/ContainerElevation"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:background="@drawable/elevation"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -74,17 +74,16 @@
 
                 <LinearLayout
                     android:id="@+id/containerDescription"
+                    style="@style/ContainerDescription"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="16dp"
-                    android:background="@drawable/text_background_gradient"
                     android:orientation="vertical"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txtEventTitle"
-                    app:layout_constraintVertical_bias="0.0">
+                    app:layout_constraintTop_toBottomOf="@+id/txtEventTitle">
 
                     <TextView
                         android:id="@+id/txtEventDescription"
@@ -113,11 +112,11 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="24dp"
                     android:contentDescription="@string/cd_img_calendar"
-                    android:src="@drawable/ic_calendar"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/containerDescription" />
+                    app:layout_constraintTop_toBottomOf="@+id/containerDescription"
+                    app:srcCompat="@drawable/ic_calendar" />
 
                 <TextView
                     android:id="@+id/txtEventDate"
@@ -139,12 +138,12 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="80dp"
                     android:contentDescription="@string/cd_img_price"
-                    android:src="@drawable/ic_price"
                     app:layout_constraintBottom_toBottomOf="@+id/imgCalendar"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toEndOf="@+id/txtEventDate"
-                    app:layout_constraintTop_toTopOf="@+id/imgCalendar" />
+                    app:layout_constraintTop_toTopOf="@+id/imgCalendar"
+                    app:srcCompat="@drawable/ic_price" />
 
                 <TextView
                     android:id="@+id/txtEventPrice"
@@ -168,13 +167,13 @@
                     android:layout_marginTop="40dp"
                     android:layout_marginBottom="24dp"
                     android:contentDescription="@string/cd_img_location"
-                    android:src="@drawable/ic_location"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/imgCalendar"
-                    app:layout_constraintVertical_bias="0.0" />
+                    app:layout_constraintVertical_bias="0.0"
+                    app:srcCompat="@drawable/ic_location" />
 
                 <TextView
                     android:id="@+id/txtEventLocation"
@@ -197,9 +196,9 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/containerActions"
+        style="@style/ContainerElevation"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@drawable/elevation"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -223,7 +222,7 @@
         <View
             android:id="@+id/divider"
             android:layout_width="1dp"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
             android:background="?android:attr/listDivider"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

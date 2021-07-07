@@ -1,7 +1,4 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <attr name="box_description_start" format="reference" />
-    <attr name="box_description_end" format="reference" />
-
     <style name="Theme.TesteSicredi" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimary">@color/white</item>
         <item name="colorPrimaryVariant">@color/gray_20</item>
@@ -11,13 +8,10 @@
         <item name="colorSecondaryVariant">@color/gray_20</item>
         <item name="colorOnSecondary">@color/white</item>
 
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor" tools:targetApi="l">@color/gray_20</item>
         <item name="android:background">@color/white</item>
 
         <item name="android:textColor">@color/black</item>
-
-        <item name="box_description_start">@color/gray</item>
-        <item name="box_description_end">@color/gray_0</item>
     </style>
 
     <style name="ButtonRefresh" parent="Widget.MaterialComponents.Button">
@@ -57,6 +51,8 @@
         <item name="hintTextColor">@color/black</item>
         <item name="colorPrimary">@color/black</item>
         <item name="colorControlActivated">@color/black</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="boxBackgroundColor">@android:color/transparent</item>
     </style>
 
     <style name="TextInput">
@@ -67,5 +63,17 @@
     <style name="ErrorDialogTheme" parent="ThemeOverlay.MaterialComponents.MaterialAlertDialog">
         <item name="materialAlertDialogTitleTextStyle">@style/TitleTextStyle</item>
         <item name="colorPrimary">@color/red</item>
+    </style>
+
+    <style name="SideBar">
+        <item name="android:background">@drawable/side_bar_rview_event_light</item>
+    </style>
+
+    <style name="ContainerElevation">
+        <item name="android:background">@drawable/elevation_light</item>
+    </style>
+
+    <style name="ContainerDescription">
+        <item name="android:background">@drawable/text_background_gradient_light</item>
     </style>
 </resources>

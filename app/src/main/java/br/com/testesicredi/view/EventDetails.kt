@@ -37,9 +37,11 @@ class EventDetails : Fragment(R.layout.fragment_event_details) {
         val eventIdFromDeepLink = args.id
 
         if (eventId != null || eventIdFromDeepLink != null) {
-            eventDetailsViewModel.getEventDetails(eventId ?: eventIdFromDeepLink!!)
-            eventDetailsResponse()
-            exceptionResponse()
+            eventIdFromDeepLink?.let {
+                eventDetailsViewModel.getEventDetails(eventId ?: eventIdFromDeepLink)
+                eventDetailsResponse()
+                exceptionResponse()
+            }
         } else {
             showErrorDialog(
                 getString(R.string.generic_exception_title),

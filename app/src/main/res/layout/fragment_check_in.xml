@@ -16,7 +16,7 @@
         android:layout_marginTop="24dp"
         android:background="@android:color/transparent"
         android:contentDescription="@string/cd_img_btn_go_back"
-        android:src="@drawable/ic_arrow_back"
+        app:srcCompat="@drawable/ic_arrow_back"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

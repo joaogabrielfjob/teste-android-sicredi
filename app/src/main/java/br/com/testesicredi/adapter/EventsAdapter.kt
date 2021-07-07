@@ -13,7 +13,7 @@ import br.com.testesicredi.util.Util
 import kotlin.collections.ArrayList
 
 class EventsAdapter: RecyclerView.Adapter<EventsAdapter.ActivityViewHolder>() {
-    private val events = ArrayList<Event>()
+    private val events = mutableSetOf<Event>()
     private val util = Util()
 
     inner class ActivityViewHolder(val binding: RecyclerViewEventBinding) : RecyclerView.ViewHolder(binding.root)
@@ -29,7 +29,7 @@ class EventsAdapter: RecyclerView.Adapter<EventsAdapter.ActivityViewHolder>() {
 
     override fun onBindViewHolder(holder: EventsAdapter.ActivityViewHolder, position: Int) {
         with(holder) {
-            with(events[position]) {
+            with(events.elementAt(position)) {
                 binding.txtEventTitle.text = title ?: "Título do evento"
 
                 date?.let {
@@ -44,12 +44,7 @@ class EventsAdapter: RecyclerView.Adapter<EventsAdapter.ActivityViewHolder>() {
     override fun getItemCount(): Int = events.size
 
     fun addItems(newEvents: ArrayList<Event>) {
-        newEvents.forEach { t ->
-            if (!events.contains(t)) {
-                events.add(t)
-            }
-        }
-
+        events.addAll(newEvents)
         this.notifyDataSetChanged()
     }
 
